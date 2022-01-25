@@ -12,8 +12,8 @@ div.border{
     width: 250px;
     height: 250px;
     border: 5px solid transparent;
-    /* margin: auto; */
-    margin: 50px 50px;
+    margin: 100px auto;
+    /* margin: 50px 50px; */
     padding-top: 95px;
     padding-left: 10px;
 
@@ -24,12 +24,11 @@ div.border div{
     font-family: sans-serif;
 }
 
-/* ================= */
+/* =======border animation========== */
 
 div.border{
     transition: border-color .1s;
     opacity: 1;
-    border: transparent transparent transparent transparent;
     animation: border-drawing 4s step-start 1s 1 normal forwards,
     border-flashing 1.5s linear 5s 2 normal forwards;
 }
@@ -64,23 +63,93 @@ div.border{
     }
 }
 
+/* ===========words animation============ */
 
-
-/* 
-@keyframes border-flashingOLD {
+div[class^="w-"] {
+    /* visibility: hidden; */
+    position: relative;
+    visibility: hidden;
+}
+div[class^="w-"]::before{
+    visibility: hidden;
+    content: attr(data-word);
+    color: black;
+    overflow: hidden;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    /* outline: 1px dashed red; */
+    left: 0;
+    /* animation: dev-drawing 2s step-end 1s 1 normal forwards; */
+}
+div.w-1::before{animation: dev-drawing 2s step-end 7s 1 normal forwards;}
+@keyframes dev-drawing {
     0%{
-        opacity: 1;
+        visibility: visible;
+        width: 0;
     }
-    25%{
-        opacity: 1;
+    33%{
+        width: 30px;
     }
-    50%{
-        opacity: 1;
-    }
+  
     75%{
-        opacity: 1;
+        width: 57px;
     }
     100%{
-        opacity: 1;
+        visibility: visible;
+        width: 87px;
     }
-} */
+}
+
+
+div.w-2::before{animation: haus-drawing 2s step-end 10s 1 normal forwards;}
+@keyframes haus-drawing {
+    0%{
+        visibility: visible;
+        width: 0;
+    }
+    25%{
+        width: 29px;
+    }
+    50%{
+        width: 57px;
+    }
+    75%{
+        width: 87px;
+    }
+    100%{
+        visibility: visible;
+        width: 110px;
+    }
+}
+
+
+div.w-3::before{animation: leipzig-drawing 4s step-end 13s 1 normal forwards;}
+@keyframes leipzig-drawing {
+    0%{
+        visibility: visible;
+        width: 0;
+    }
+    15%{
+        width: 25px;
+    }
+    30%{
+        width: 50px;
+    }
+    45%{
+        width: 60px;
+    }
+    60%{
+        width: 86px;
+    }
+    75%{
+        width: 112px;
+    }
+    90%{
+        width: 122px;
+    }
+    100%{
+        visibility: visible;
+        width: 155px;
+    }
+}
