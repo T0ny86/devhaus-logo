@@ -11,16 +11,76 @@ body{
 div.border{
     width: 250px;
     height: 250px;
-    border: 5px solid black;
+    border: 5px solid transparent;
     /* margin: auto; */
-    margin: 10px 10px;
+    margin: 50px 50px;
     padding-top: 95px;
     padding-left: 10px;
+
 }
 
-div.border span{
+div.border div{
     font-size: 40px;
+    font-family: sans-serif;
 }
 
 /* ================= */
 
+div.border{
+    transition: border-color .1s;
+    opacity: 1;
+    border: transparent transparent transparent transparent;
+    animation: border-drawing 4s step-start 1s 1 normal forwards,
+    border-flashing 1.5s linear 5s 2 normal forwards;
+}
+
+@keyframes border-drawing {
+   0%{
+        border-color: transparent transparent transparent transparent;
+    }
+    25%{
+        border-color: transparent transparent transparent black;
+    }
+    50%{
+        border-color: black transparent transparent black;
+    }
+    75%{
+        border-color: black black transparent black;
+    }
+    100%{
+        border-color: black black black black;
+    }
+  
+}
+
+@keyframes border-flashing {
+    from{
+        opacity: 0.5;
+        border: 5px solid rgb(179, 131, 10);
+    }
+    to{
+        opacity: 1;
+        border: 5px solid black;
+    }
+}
+
+
+
+/* 
+@keyframes border-flashingOLD {
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+} */
